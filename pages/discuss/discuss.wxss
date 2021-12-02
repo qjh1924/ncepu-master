@@ -1,0 +1,157 @@
+
+/*中间文字样式*/
+.centerContent{
+  display: block;
+  font-size: 33rpx;
+}
+/*整体view样式*/
+.containsView{
+  padding: 15rpx 15rpx 15rpx 15rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  background-color: white;
+}
+/*头部整体样式*/
+.topContainsView{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 18rpx;
+}
+
+/**
+ * 头像样式
+*/
+.profileImage{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+}
+
+/*头部显示名字和时间整体样式*/
+.topRightView{
+  margin-left: 15rpx;
+  display: flex;
+  flex-direction: column;
+}
+/*用户名称样式*/
+.topRightName{
+  font-size: 28rpx;
+}
+/*时间样式*/
+.topRightTime{
+  font-size: 20rpx;
+  color: #b8b2b2;
+}
+
+/*因为中间部分不一样不放在整体样式中*/
+
+/*底部view整体样式*/
+.bottomView{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+/*每个Item样式*/
+.bottomItemView{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+/*Item样式中的图标样式 顶 踩 分享 评论*/
+.bottomItemImage{
+  width: 45rpx;
+  height: 45rpx;
+}
+/*Item中的文字样式  顶 踩 分享 评论*/
+.bottomItemText{
+  font-size: 15rpx;
+  color: #b8b2b2;
+  margin-left: 10rpx;
+  margin-top: 8rpx;
+}
+
+/*分割线样式*/
+.divLine{
+  background: #f3f3f3;
+  width: 100%;
+  height: 15rpx;
+}
+
+.commentline{
+  background: #f3f3f3;
+  height: 2rpx;
+}
+
+.placeholderstyle{
+  font-size: 30rpx;
+  color: #5c5c5c;
+}
+
+.submit-btn {
+    display: flex;
+    width: 200rpx;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #3ea0f0;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 150%;
+}
+.coupons-float {
+  position: fixed;
+  right:15rpx;
+  bottom:80rpx;
+  width:80rpx;
+  height:80rpx;
+  background-color: #fff;
+  text-align: center;
+  border-radius:50%;
+  border: 1rpx solid #ddd;
+}
+.coupons-float image {
+  width:60rpx;
+  height:60rpx;
+  margin-top: 10rpx;
+}
+.issues-textarea{
+    width: 100%;
+    padding: 25rpx;
+    min-height: 225rpx;
+    box-sizing: border-box;
+    font-size: 35rpx;
+    color: black;
+}
+.weui-uploader{
+  padding: 10rpx;
+}
+
+.pic {
+float:left;
+position:relative;
+margin-right:9px;
+margin-bottom:9px;
+}
+
+.delete-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+ 
+button {
+  width: 100%;
+  margin-top: 30rpx;
+}
+.guifan{
+  color: rgb(80, 80, 255);
+}
+ 
+ 

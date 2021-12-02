@@ -1,0 +1,13 @@
+<!--pages/mine/coupon/coupon.wxml-->
+<view class="weui-cells weui-cells_after-title display">
+  <form bindsubmit="getCounponByPwd" report-submit="true">
+    <view>
+      <view>
+        <input name="pwd" class="inputcode" placeholder="请输入卡券码" bindinput="getinputcode" />
+      </view>
+      <view>
+        <button type="default" formType="submit">兑换</button>
+      </view>
+    </view>
+  </form>
+</view>

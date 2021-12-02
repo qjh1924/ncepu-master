@@ -1,0 +1,15 @@
+/* pages/index/aboutme/aboutme.wxss */
+.contain{
+  background-color: #f6f6f6;
+  padding: 0;
+  padding-top: 30rpx;
+  font-size: 11pt;
+  box-sizing: border-box;
+  height: 100vh;
+}
+.wenzi{
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

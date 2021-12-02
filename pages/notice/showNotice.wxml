@@ -1,0 +1,5 @@
+<view class="notice">
+  <view class="title">{{notice.notice_title}}</view>
+  <view class="text">{{notice.notice_content}}</view>
+</view>
+<float-menu /> 

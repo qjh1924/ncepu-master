@@ -1,0 +1,31 @@
+<!--issues.wxml-->
+<view class='contain'>
+  <text class="issues-label">提交反馈</text>
+  <view class="issues-panel">
+    <view class="issues-input">
+      <input placeholder="请输入反馈标题" bindinput="listenerTitle" />
+    </view>
+    <textarea class="issues-textarea" cursor-spacing="50" placeholder="请输入反馈内容" bindinput="listenerTextarea"></textarea>
+  </view>
+  <view class="submit-btn" bindtap="submit">
+    <text>提交反馈</text>
+  </view>
+  <view class="login-help" bindtap="showHelp">
+    <text>帮助</text>
+    <image class="login-help-img" src="/images/index/help.png"></image>
+  </view>
+</view>
+
+<view class="help" id="help" wx:if="{{showtip}}" bindtap="tapHelp">
+  <view class="box">
+    <view class="box-hd">
+      <text class="box-title">帮助</text>
+      <image class="box-close" src="/images/index/close.png" bindtap="hideHelp"></image>
+    </view>
+    <view class="box-bd">
+      <view class="help-a">
+        <text>如果您对我们的产品或服务有任何意见和建议请及时告诉我们,感谢您的支持与理解！</text>
+      </view>
+    </view>
+  </view>
+</view>

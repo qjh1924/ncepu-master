@@ -1,0 +1,90 @@
+<!--index.wxml-->
+<view class="swiper-container">
+  <swiper indicator-dots="true" indicator-active-color="#fff" autoplay circular style="height:100%">
+    <swiper-item wx:for="{{bannnerList}}" wx:key="id" >
+      <image class="index-img" src="{{item.banner_path}}" role="img" bindtap="onSwiperTap" data-category="{{item.banner_category}}"> </image>
+    </swiper-item>
+  </swiper>
+  <view class="search">
+    <input type="text" placeholder="搜索相关商品" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/images/icon/search.svg"></image>
+  </view>
+</view>
+<view class="notice-box" wx:if="{{noticeList}}">
+  <view class="notice">
+    <image class="notice_icon" src="/images/notice.png"></image>
+    <swiper class="notice_swiper" vertical autoplay circular>
+      <navigator wx:for-items="{{noticeList}}" wx:key="id" url="/pages/notice/show?id={{index}}">
+        <swiper-item>
+          <view class="notice_itemr">{{item.notice_title}}</view>
+        </swiper-item>
+      </navigator>
+    </swiper>
+  </view>
+  <view class="more"><navigator url="/pages/notice/index">更多 ></navigator></view>
+</view>
+<view class="space" style="height: 2rpx"></view>
+
+<view class="category-box">
+  <view class="category-list" wx:for="{{categories}}" wx:key="id">
+    <view class="category-column {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick" id="{{item.id}}">
+      <image mode="aspectFill" class="category-imgbox" src="{{item.img}}?id=1" bindtap="f0" data-val="{{item.id}}"></image>
+      <view class="category-title">{{item.name}}</view>
+    </view>          
+  </view>
+</view>
+<view style="height:40rpx;"></view>
+<view class="space"></view>
+<view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">热卖专区</view>
+  </view>
+  <view class="goods-container">
+    <view class="goods-box" wx:for-items="{{goods}}" wx:key="id" bindtap="addcart" data-id="{{item.id}}">
+      <view class="img-box">
+        <image src="{{item.img}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="goods-title">{{item.name}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">¥ {{item.price}}</view>
+        <view class="goods-price" style='color:#aaa;text-decoration:line-through'>原价: {{item.oriprice}}</view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{loadingMoreHidden ? true : false}}" class="weui-loadmore weui-loadmore_line" style='margin-top:60rpx;margin-bottom:30rpx;'>
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
+  </view>
+
+  <view class="show-popup" hidden="{{hideShopPopup}}" catchtouchmove="true">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-img-box">
+          <image src="{{goodsDetail.img}}" class="goods-thumbnail" bindtap="showgoodpic" data-src="{{goodsDetail.img}}"/>
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{goodsDetail.name}}</view>
+          <view class="pop-goods-price">¥ {{goodsDetail.price}}
+            <text class="pop-goods-oriprice">¥ {{goodsDetail.oriprice}}</text>
+          </view>
+          <view class="pop-good-inventory">库存剩余{{goodsDetail.inventory}}件</view>
+        </view>
+        <view class="pop-goods-close" bindtap="closePopupTap"></view>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian" bindtap="numJianTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyNumber}}" disabled/>
+          </view>
+          <view class="num-jia" bindtap="numJiaTap">+</view>
+        </view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" bindtap="addShopCar">
+        <view class="popup-join-btn">加入购物车</view>
+      </view>
+    </view>
+  </view>
+<view bindtap="backTop" hidden="{{backTopValue}}">
+  <image class='coupons-float' src="/images/icon/fhdb.png"></image>
+</view>

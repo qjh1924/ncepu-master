@@ -1,0 +1,7 @@
+<!--pages/index/aboutme/aboutme.wxml-->
+<view class="contain">
+  <view class="wenzi">华电零食盒子</view>
+  <view class="wenzi">小程序版本号：XXXX</view>
+  <view class="wenzi">开发者微信：WYHYB1924</view>
+  <view class="wenzi">售后服务热线：18510202711</view>
+</view>

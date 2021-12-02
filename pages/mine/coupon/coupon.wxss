@@ -1,0 +1,12 @@
+/* pages/mine/coupon/coupon.wxss */
+
+.display{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.inputcode{
+  height: 100rpx;
+  border: 1px solid #cfcfcf;
+  border-radius: 20rpx;
+}

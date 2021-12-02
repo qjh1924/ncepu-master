@@ -1,0 +1,75 @@
+<view class="header">
+  <view class="search">
+    <input type="text" placeholder="搜索相关商品" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/images/icon/search.svg"></image>
+  </view>
+  <image class="show-type" src="/images/icon/list{{listType}}.svg" bindtap="changeShowType"></image>
+</view>
+<view class="line"></view>
+<view class="filters">
+  <view class="item {{orderBy=='1'?'active':''}}"  data-val="1" bindtap="filter1">新品</view>
+  <view class="item {{orderBy=='2'?'active':''}}"  data-val="2" bindtap="filter2">销量</view>
+  <view class="item {{orderBy=='3'?'active':''}}"  data-val="3" bindtap="filter3">价格</view>
+</view>
+<navigator wx:if="{{listType == 1}}" wx:for="{{goods}}" wx:key="id">
+  <view class="list1" data-id="{{item.id}}" bindtap="addcart">
+    <image class="img" mode="aspectFill" src="{{item.img}}"></image>
+    <view class="goods-info">
+      <view class="title">{{item.name}}</view>
+      <view class="price">¥ {{item.price}}</view>
+      <view class="buy-info">
+        <view class="num">{{item.sales_volume}}人已购买</view>
+        <image class="car" src="/images/icon/car.svg"></image>
+      </view>
+    </view>
+  </view>
+</navigator>
+<view wx:if="{{listType == 2}}" class="list2-box">
+  <navigator wx:for="{{goods}}" wx:key="id">
+    <view class="list2" data-id="{{item.id}}" bindtap="addcart">
+      <image class="img" mode="aspectFill" src="{{item.img}}"></image>
+      <view class="goods-info">
+        <view class="title">{{item.name}}</view>
+        <view class="price">¥ {{item.price}}</view>
+        <view class="buy-info">
+          <view class="num">{{item.sales_volume}}人已购买</view>
+          <image class="car" src="/images/icon/car.svg"></image>
+        </view>
+      </view>
+    </view>
+  </navigator>  
+</view>
+<view class="show-popup" hidden="{{hideShopPopup}}" catchtouchmove="true">
+    <view class="popup-mask" bindtap="closePopupTap"></view>
+    <view class="popup-contents">
+      <view class="pop-goods-info">
+        <view class="pop-img-box">
+          <image src="{{goodsDetail.img}}" class="goods-thumbnail" bindtap="showgoodpic" data-src="{{goodsDetail.img}}"/>
+        </view>
+        <view class="pop-goods-des">
+          <view class="pop-goods-title">{{goodsDetail.name}}</view>
+          <view class="pop-goods-price">¥ {{goodsDetail.price}}
+            <text class="pop-goods-oriprice">¥ {{goodsDetail.oriprice}}</text>
+          </view>
+          <view class="pop-good-inventory">库存剩余{{goodsDetail.inventory}}件</view>
+        </view>
+        <view class="pop-goods-close" bindtap="closePopupTap"></view>
+      </view>
+      <view class="buy-num-box">
+        <view class="num-label">购买数量</view>
+        <view class="num-box">
+          <view class="num-jian" bindtap="numJianTap">-</view>
+          <view class="num-input">
+            <input type="number" value="{{buyNumber}}" disabled/>
+          </view>
+          <view class="num-jia" bindtap="numJiaTap">+</view>
+        </view>
+      </view>
+      <view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" bindtap="addShopCar">
+        <view class="popup-join-btn">加入购物车</view>
+      </view>
+    </view>
+  </view>
+  <view bindtap="qujiesuan">
+    <image class='coupons-float' src="/images/icon/qjs.png"></image>
+  </view>

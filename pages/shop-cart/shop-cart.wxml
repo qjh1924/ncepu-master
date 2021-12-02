@@ -1,0 +1,90 @@
+<view class="container" hidden="{{hideEmptyCar}}">
+  <view class="title-box"> 购物车空空如也 </view>
+  <view bindtap="toIndexPage" class="to-index-btn"> 去逛逛 </view>
+</view>
+
+<view class="goodsList" hidden="{{!hideEmptyCar}}">
+  <view class="a-gooods" wx:for="{{orderInfo}}" wx:key="key" bindlongtap="delecurrentgood" data-index="{{index}}">
+    <view class="a-goods-conts">
+      <view class="goods-info">
+        <view class="img-box">
+          <image mode="aspectFill" src="{{item.img}}" class="img" bindtap="showgoodpic" data-src="{{item.img}}"/>
+        </view>
+        <view class="text-box">
+          <view class="goods-title">{{item.name}}</view>
+          <view class="goods-price">¥ {{item.price}}</view>
+          <view class="buy-num">
+            <view class="jian-btn" catchtap="jianBtnTap" data-index="{{index}}">-</view>
+            <input type="number" value="{{orderNum[index]}}" disabled/>
+            <view class="jia-btn" catchtap="jiaBtnTap" data-index="{{index}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="jiesuan-box">
+  <view class="left-price">
+    <view class="total" hidden="{{noSelect}}">合计：¥ {{totalprice}}</view>
+  </view>
+  <view class="to-pay-btn" bindtap="payment">
+    <text>去结算</text>
+  </view>
+</view>
+
+<modal hidden="{{hiddenmodalput}}" title="确认订单信息" confirm-text="确认" cancel-text="取消" bindcancel="cancelOrder" bindconfirm="confirmOrder">
+  <scroll-view scroll-y="true" style="height: 750rpx;" scroll-top="0" >
+    <view wx:for="{{orderInfo}}" wx:key="key">
+      <view>
+        <text>{{item.name}}[单价:{{item.price}}]</text>
+        <view style="text-align:right">X{{orderNum[index]}}</view>
+      </view>
+    </view>
+    <view>请完善配送信息：</view>
+    <view hidden="{{!ifdelivery}}">
+      <view>收货人：<input style="border:solid" placeholder="请输入收货人姓名"  value="{{deliveryinfo.consignee}}" bindinput="getconsignee" maxlength="15"/></view>
+      <view>手机号：<input style="border:solid" placeholder="请输入收货人电话" maxlength="11" value="{{deliveryinfo.consignee_phonenum}}" bindinput="getconsignee_phonenum" /></view>
+      <view>收货地址：<input style="border:solid" placeholder="请输入收货地址(仅限华电校内)" value="{{deliveryinfo.consignee_add}}" bindinput="getconsignee_add" maxlength="15"/></view>
+      <view>备注：<input style="border:solid" placeholder="如有时间或其他需求请输入" bindinput="getaddnote" maxlength="30"/></view>
+      <view>配送方式：</view>
+      <radio-group bindchange="radioChange">
+        <label class="radio">
+          <radio value="1" checked="true"/>送货到寝
+        </label>
+        <label class="radio">
+          <radio value="0" />一层自取
+        </label>
+      </radio-group>
+      <view hidden="{{!ifdeliveryfree}}" style="color:#666">1小时内送达，免配送费</view>
+      <view hidden="{{ifdeliveryfree}}" style="color:#666">1小时内送达，总价未满{{deliverythreshold}}元，收取{{deliveryfee}}元配送费</view>
+    </view>
+    <view style="text-align:right">合计：¥ {{totalprice}}元</view>
+  </scroll-view>
+</modal>
+
+<modal hidden="{{hiddenconfirmpay}}" title="确认支付" confirm-text="确认" cancel-text="取消" bindcancel="cancelPayment" bindconfirm="confirmPayment">
+  <scroll-view scroll-y="true" style="height: 750rpx;" scroll-top="0" >
+    <view wx:for="{{orderInfo}}" wx:key="key">
+      <view>
+        <text>{{item.name}}[单价:{{item.price}}]</text>
+        <view style="text-align:right">X{{orderNum[index]}}</view>
+      </view>
+    </view>
+    <view hidden="{{ifdelivery}}">
+      <view>配送方式：宿舍自取</view>
+      <view>宿舍号：{{useraddress}}</view>
+      <view>手机号：{{userphonenum}}</view>
+    </view>
+    <view hidden="{{!ifdelivery}}">
+      <view hidden="{{!ifdeliveryfree}}" style="color:#666">免配送费</view>
+      <view hidden="{{ifdeliveryfree}}" style="color:#666">配送费{{deliveryfee}}元</view>
+      <view>收货人：{{deliveryinfo.consignee}}</view>
+      <view>手机号：{{deliveryinfo.consignee_phonenum}}</view>
+      <view>收货地址：{{deliveryinfo.consignee_add}}</view>
+      <view hidden="{{!delivery_type}}">配送方式：送货到寝</view>
+      <view hidden="{{delivery_type}}">配送方式：一层自取</view>
+      <view>备注：{{deliveryinfo.addnote}}</view>
+    </view>
+    <view style="text-align:right">合计：¥ {{totalprice}}元</view>
+  </scroll-view>
+</modal>

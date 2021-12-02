@@ -1,0 +1,54 @@
+page {
+  background: #F2f2f2;
+  height: 100%;
+}
+.pop-goods-info{
+  background-color:white; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.pop-img-box{
+  width: 120rpx;
+  height: 120rpx;
+  overflow: hidden;
+  margin-right: 26rpx;
+}
+.pop-img-box .goods-thumbnail{
+  width: 120rpx;
+  height: 120rpx;
+}
+.pop-goods-title{
+  width: 484rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size:26rpx;
+  color:#000000;
+}
+.pop-goods-price{
+  font-size:26rpx;
+  color:#e64340;
+  margin-top:20rpx; 
+}
+.showtime{
+  background-color: white;
+  font-size:28rpx;
+  width: 100%;
+  height: 45rpx;
+}
+.showmoney{
+  background-color: white;
+  font-size:26rpx;
+  color:black;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+.space{
+  width: 100%;
+  height: 20rpx;
+}

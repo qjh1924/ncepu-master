@@ -1,0 +1,89 @@
+<loading hidden="{{loadingHidden}}">正在加载...</loading>
+<scroll-view scroll-y="true" bindscrolltoupper="bindscrolltoupper" bindscrolltolower="bindscrolltolower" style="height: 100%">
+  <block wx:for-items="{{list}}" wx:key="id">
+    <!-- 分割线 -->
+    <view class="divLine"></view>
+    <!-- 整体item样式 -->
+    <view class="containsView">
+    <!--顶部样式-->
+      <view class="topContainsView">
+        <view class="topRightView">
+          <text class="topRightName">{{item.nicheng[0]}}**</text>
+          <text class="topRightTime">{{item.shijian}}</text>
+        </view>
+      </view>
+      <!-- 中间内容 -->
+      <text class="centerContent">{{item.neirong}}</text>
+      <image wx:if="{{item.peitu != ''}}" src="{{item.peitu}}" mode="aspectFit" style="margin-top:10rpx"></image>
+      <!-- 底部view样式 -->
+      <view class="bottomView">
+        <view hidden="{{item.dianzanflag}}" class="bottomItemView" bindtap="dianzan" data-vel="{{index}}" data-val="{{item.id}}">
+          <image class="bottomItemImage" src="/images/tcxq/ding.png" />
+          <text class="bottomItemText">{{item.zans}}</text>
+        </view>
+        <view hidden="{{!item.dianzanflag}}" class="bottomItemView">
+          <image class="bottomItemImage" src="/images/tcxq/ding1.png" />
+          <text class="bottomItemText">{{item.zans}}</text>
+        </view>
+        <view hidden="{{item.caiflag}}" class="bottomItemView" bindtap="cai" data-vel="{{index}}" data-val="{{item.id}}">
+          <image class="bottomItemImage" src="/images/tcxq/cai.png" />
+          <text class="bottomItemText">{{item.cais}}</text>
+        </view>
+        <view hidden="{{!item.caiflag}}" class="bottomItemView">
+          <image class="bottomItemImage" src="/images/tcxq/cai1.png" />
+          <text class="bottomItemText">{{item.cais}}</text>
+        </view>
+        <view hidden="{{item.pinglunflag}}" class="bottomItemView" bindtap="comment" data-vel="{{index}}" data-val="{{item.id}}">
+          <image class="bottomItemImage" src="/images/tcxq/comment.png" />
+          <text class="bottomItemText">{{item.pingluns}}</text>
+        </view>
+        <view hidden="{{!item.pinglunflag}}" class="bottomItemView" bindtap="closecomment" data-vel="{{index}}">
+          <image class="bottomItemImage" src="/images/tcxq/comment1.png" />
+          <text class="bottomItemText">{{item.pingluns}}</text>
+        </view>
+      </view>
+      <view style="padding-left:20rpx;" hidden="{{!item.pinglunflag}}">
+        <view class="commentline"></view>
+        <block wx:for-items="{{commentslist}}" wx:key="id">
+      <view class="topContainsView">
+        <view class="topRightView">
+          <text style="font-size:20rpx">{{item.nicheng[0]}}**</text>
+          <text class="topRightTime" style="font-size:20rpx;">{{item.timestamp}}</text>
+          <view style="font-size:28rpx;">{{item.content}}</view>
+        </view>
+      </view>
+        </block>
+        <view>
+          <input placeholder="请输入评论内容" placeholder-class="placeholderstyle" bindinput="getcommenttext" value="{{pingluntext}}"></input>
+        </view>
+        <view class="submit-btn" bindtap="submit" data-val="{{item.id}}" data-vel="{{index}}">
+          <text>提交</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<view class='coupons-float' bindtap="saysomething">
+  <image src="/images/gift.png"></image>
+</view>
+
+<modal hidden="{{hiddenmodalinput}}" title="我要说" confirm-text="发布" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
+    <textarea class="issues-textarea" cursor-spacing="50" placeholder="请输入内容(若上传照片，大小限制为1M)" bindinput="getsayingtext"></textarea>
+<view class="weui-uploader">
+  <view class="img-v weui-uploader__bd">
+    <view class='pic' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+        <image class='weui-uploader__img '
+                src="{{item}}"
+                data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+                  <icon type='cancel' class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+        </image>
+    </view>
+      <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view>
+  </view>
+</view>
+<radio-group bindchange="radioChange">
+  <radio value="true">我已阅读并同意了</radio>
+  <text class="guifan" bindtap="guifan">【评论区文明发帖及违规处理规则】</text>
+</radio-group>
+</modal>

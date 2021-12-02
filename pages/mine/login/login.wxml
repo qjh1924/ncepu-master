@@ -1,0 +1,75 @@
+<!--login.wxml-->
+<view class="contain">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/images/index/loading.gif"></image>
+  </view>
+    <image class="title" src="/images/index/title.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+          <image class="logo" src="/images/index/logo2.png"></image>
+          <image class="wave" src="/images/index/wave.png" mode="aspectFill"></image>
+          <image class="wave wave-bg" src="/images/index/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{userid_focus ? 'active' : ''}}">
+            <text class="input-label">默认地址</text>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange1" value="{{index1}}" range="{{buidings}}">
+              <view class="weui-input" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{buidings[index1]}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{entrances}}">
+                <view class="weui-input" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{entrances[index2]}}</view>
+            </picker>
+          </view>
+            <input cursor-spacing="30" id="userid" maxlength="3" placeholder="房间号" bindinput="useraddInput" bindfocus="inputFocus" bindblur="inputBlur" value="{{roomnum}}"/>
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">收货人</text>
+            <input cursor-spacing="30" id="username" placeholder="请输入您的名称" bindinput="consigneeInput" bindfocus="inputFocus" bindblur="inputBlur" value="{{consignee}}"/>
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">手机号</text>
+            <input cursor-spacing="30" id="passwd" maxlength="11" placeholder="请输入您的手机号" bindinput="userphonenumInput" bindfocus="inputFocus" bindblur="inputBlur" value="{{userphonenum}}"/>
+          </view>
+          <view class="login-help" bindtap="showHelp">
+            <text>帮助</text>
+            <image class="login-help-img" src="/images/index/help.png"></image>
+          </view>
+        </form>
+        <view class="confirm-btn" bindtap="bind">
+            <text>确认绑定</text>
+        </view>
+      </view>
+
+      <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">帮助</text>
+            <image class="box-close" src="/images/index/close.png" bindtap="hideHelp"></image>
+          </view>
+          <view class="box-bd">
+            <view class="help-a">
+              <text>您可以在此页面绑定和修改默认收货信息</text>
+            </view>
+            <view class="help-q">默认收货地址</view>
+            <view class="help-a">
+              <text>地址格式：X号楼X单元XXX，没有单元号的请选择0单元，如：1号楼2单元304、8A楼0单元101</text>
+            </view>
+            <view class="help-q">手机号</view>
+            <view class="help-a">
+              <text>请输入您的11位手机号码，仅用于验证身份，我们不会泄露您的个人隐私</text>
+            </view>
+            <view class="help-q" style="color:#FF0000">注意</view>
+            <view class="help-a">
+              <text>请您认真核对地址和电话信息，再次提交会覆盖原有记录</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="tc"></view>
+
+</view>
