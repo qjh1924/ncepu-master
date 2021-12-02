@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/index/goodlist/list",
+    "pages/shop-cart/shop-cart",
+    "pages/mine/login/login",
+    "pages/mine/feedback/feedback",
+    "pages/mine/historyorders/hos",
+    "pages/mine/aboutme/aboutme",
+    "pages/notice/noticeList",
+    "pages/notice/showNotice",
+    "pages/discuss/discuss",
+    "pages/mine/mypost/mypost",
+    "pages/mine/kefu/kefu",
+    "pages/mine/coupon/coupon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F5F5F5",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#e64340",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabBar/index.png",
+        "selectedIconPath": "images/tabBar/index1.png"
+      },
+      {
+        "pagePath": "pages/shop-cart/shop-cart",
+        "text": "购物车",
+        "iconPath": "images/tabBar/cart-off.png",
+        "selectedIconPath": "images/tabBar/cart-on.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/tabBar/info.png",
+        "selectedIconPath": "images/tabBar/info1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
