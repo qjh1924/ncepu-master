@@ -391,7 +391,7 @@ Page({
           success () {
             if (wx.requestSubscribeMessage) {
               wx.requestSubscribeMessage({
-                tmplIds: ["5-r0Chee3OunigmvEDIwIisUsRR5PalgSKVUx7QW3mY"],
+                tmplIds: ["xxx"],
                 success: function(res) {
                   wx.showToast({
                     title: '订阅成功！',
